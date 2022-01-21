@@ -20,7 +20,9 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     elif request.method == "POST":
-        pass
+        pw = request.form["password"]
+        username = request.form["username"]
+        return render_template("index.html", username=username)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
