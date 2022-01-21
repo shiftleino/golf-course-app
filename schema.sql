@@ -32,5 +32,7 @@ CREATE TABLE CourseLocations (
     course_id INTEGER REFERENCES Courses,
     latitude INTEGER,
     longitude INTEGER,
-    municipality TEXT
+    municipality TEXT,
+    distance INTEGER,
+    drive_time INTEGER
 );
