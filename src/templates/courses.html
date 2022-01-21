@@ -1,0 +1,21 @@
+<h1>The golf courses in Uusimaa, Finland</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.name }}</td>
+                <td>Golf Course</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>Value</td>
+            <td>Value2</td>
+        </tr>
+    </tbody>
+</table>
