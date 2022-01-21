@@ -11,6 +11,7 @@ lazy-object-proxy==1.7.1
 MarkupSafe==2.0.1
 mccabe==0.6.1
 platformdirs==2.4.1
+psycopg2-binary==2.9.3
 pylint==2.12.2
 python-dotenv==0.19.2
 SQLAlchemy==1.4.29
