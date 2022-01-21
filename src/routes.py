@@ -1,5 +1,6 @@
 from flask import render_template, request
 from app import app
+from controllers import golf_courses
 
 @app.route("/")
 def index():
@@ -7,7 +8,8 @@ def index():
 
 @app.route("/courses")
 def courses():
-    return "The golf courses in Uusimaa, Finland"
+    all_courses = golf_courses.get_all_courses()
+    return render_template("courses.html", courses=all_courses)
 
 @app.route("/course/<int:id>")
 def course(id):
