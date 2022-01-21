@@ -17,7 +17,8 @@ CREATE TABLE Reviews (
     user_id INTEGER REFERENCES Users,
     course_id INTEGER REFERENCES Courses,
     rating INTEGER,
-    comment TEXT
+    comment TEXT,
+    sent_at TIMESTAMP
 );
 
 CREATE TABLE CoursePrices (
