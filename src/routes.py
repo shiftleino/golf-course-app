@@ -4,7 +4,7 @@ from controllers import golf_courses, users
 
 @app.route("/")
 def index():
-    return render_template("index.html", courses=["Paloheinä Golf", "Kullo Golf", "Keimola Golf Club"])
+    return render_template("index.html")
 
 @app.route("/courses")
 def courses():
