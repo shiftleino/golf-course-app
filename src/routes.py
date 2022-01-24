@@ -8,11 +8,13 @@ def index():
 
 @app.route("/courses")
 def courses():
+    users.require_login()
     all_courses = golf_courses.get_all_courses()
     return render_template("courses.html", courses=all_courses)
 
 @app.route("/course/<int:id>")
 def course(id):
+    users.require_login()
     return f"{id}"
 
 @app.route("/login", methods=["GET", "POST"])

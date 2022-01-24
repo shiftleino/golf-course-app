@@ -1,15 +1,18 @@
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import session
+from flask import session, abort
 from database.db import db
 
 def signup(username, password):
     if len(username) < 3 or len(password) < 3:
         return False
     hash_value = generate_password_hash(password)
-    sql = "INSERT INTO Users (username, password, role) VALUES (:username, :password, 0)"
-    db.session.execute(sql, {"username": username, "password": hash_value})
-    db.session.commit()
-    return True
+    try:
+        sql = "INSERT INTO Users (username, password, role) VALUES (:username, :password, 0)"
+        db.session.execute(sql, {"username": username, "password": hash_value})
+        db.session.commit()
+        return True
+    except:
+        return False
 
 def login(username, password):
     sql = "SELECT id, password, role FROM Users WHERE username=:username"
@@ -31,5 +34,7 @@ def logout():
     del session["user_name"]
     del session["user_role"]
 
-def user_id():
-    return session.get("user_id", 0)
+def require_login():
+    user_id = session.get("user_id", 0)
+    if user_id == 0:
+        abort(403)
