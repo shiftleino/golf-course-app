@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, session, redirect
 from app import app
 from controllers import golf_courses
 
@@ -20,10 +20,19 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     elif request.method == "POST":
-        pw = request.form["password"]
+        password = request.form["password"]
         username = request.form["username"]
-        return render_template("index.html", username=username)
+        session["username"] = username
+        return redirect("/")
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    return render_template("signup.html") 
+    if request.method == "GET":
+        return render_template("signup.html")
+    elif request.method == "POST":
+        return redirect("/")
+
+@app.route("/logout")
+def logout():
+    del session["username"]
+    return redirect("/")
