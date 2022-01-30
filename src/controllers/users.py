@@ -31,7 +31,7 @@ def login(username, password):
 
 def logout():
     del session["user_id"]
-    del session["user_name"]
+    del session["username"]
     del session["user_role"]
 
 def require_login():
