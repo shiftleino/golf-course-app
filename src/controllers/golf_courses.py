@@ -51,3 +51,20 @@ def get_price_info(course_id):
     """
     result = db.session.execute(sql, {"id": course_id}).fetchall()
     return result
+
+def add_course(data):
+    sql = """
+    INSERT INTO Courses (name, holes, link)
+    VALUES (:name, :holes, :link);
+    """
+    db.session.execute(sql, {"name": data["name"], "holes": int(data["holes"]), "link": data["link"]})
+    sql = """
+    SELECT id FROM Courses WHERE name=:name;
+    """
+    course_id = db.session.execute(sql, {"name": data["name"]}).fetchone()[0]
+    sql = """
+    INSERT INTO CourseLocations (course_id, address, latitude, longitude, municipality, distance, drive_time)
+    VALUES (:id, :address, :lat, :lon, :municipality, :distance, :drive_time);
+    """
+    db.session.execute(sql, {"id": course_id, "address": data["address"], "lat": float(data["lat"]), "lon": float(data["lon"]), "municipality": data["municipality"], "distance": int(data["distance"]), "drive_time": int(data["drive_time"])})
+    db.session.commit()

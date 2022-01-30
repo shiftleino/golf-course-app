@@ -11,6 +11,23 @@ def courses():
     users.require_login()
     if request.method == "POST":
         users.check_csrf()
+        users.require_role(1)
+        try:
+            data = {
+                "name": request.form["name"],
+                "holes": request.form["holes"],
+                "link": request.form["link"],
+                "address": request.form["address"],
+                "lat": request.form["lat"],
+                "lon": request.form["lon"],
+                "municipality": request.form["municipality"],
+                "distance": request.form["distance"],
+                "drive_time": request.form["drive_time"]
+            }
+            golf_courses.add_course(data)
+        except:
+            all_courses = golf_courses.get_basic_info()
+            return render_template("courses.html", courses=all_courses, role=session["user_role"], error="Something went wrong when adding the golf course.")
     all_courses = golf_courses.get_basic_info()
     return render_template("courses.html", courses=all_courses, role=session["user_role"])
 

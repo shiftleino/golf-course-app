@@ -18,11 +18,13 @@
                     <td>
                         <form action="/courses/{{ course.id }}" method="POST">
                             <button type="submit">More Information</button>
+                        </form>
                     </td>
                     {% if role == 1 %}
                     <td>
                         <form action="/courses/{{ course.id }}" method="DELETE">
                             <button type="submit">Delete</button>
+                        </form>
                     </td>
                     {% endif %}
                 </tr>
@@ -35,6 +37,7 @@
 {% block admin %}
 {% if role == 1 %}
 <hr>
+<p>{{ error }}</p>
 <h3>Add a Golf Course</h3>
 <form action="/courses" method="POST">
     <fieldset>
@@ -50,14 +53,15 @@
         <label for="lat">Latitude: </label>
         <input type="text" name="lat"><br><br>
         <label for="lon">Longitude: </label>
-        <input type="text" name="link"><br><br>
+        <input type="text" name="lon"><br><br>
         <label for="municipality">Municipality: </label>
         <input type="text" name="municipality"><br><br>
         <label for="distance">Distance from Helsinki: </label>
         <input type="text" name="distance"><br><br>
-        <label for="drive">Drivetime from Helsinki: </label>
-        <input type="text" name="drive"><br><br>
+        <label for="drive_time">Time to drive from Helsinki: </label>
+        <input type="text" name="drive_time"><br><br>
         <input type="submit" value="Submit">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     </fieldset>
 </form>
 {% endif %}
