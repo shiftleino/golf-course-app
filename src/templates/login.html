@@ -1,11 +1,14 @@
-<h2>Log in</h2>
-<div class="error">{{ error }}</div>
-<form action="/login" method="POST">
-    Username:<br>
-    <input type="text" name="username" size="15" minlength="3"><br>
-    Password:<br>
-    <input type="password" name="password" size="15" minlength="3"><br>
-    <input type="submit" value="Login">
-</form>
-<p><a href="/signup">No account yet? Go to signup.</a></p>
-<p><a href="/">Back to front page.</a></p>
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Log in</h2>
+    <div class="error">{{ error }}</div>
+    <form action="/login" method="POST">
+        Username:<br>
+        <input type="text" name="username" size="15" minlength="3"><br>
+        Password:<br>
+        <input type="password" name="password" size="15" minlength="3"><br>
+        <input type="submit" value="Login">
+    </form>
+    <p><a href="/signup">No account yet? Go to signup.</a></p>
+    <p><a href="/">Back to front page.</a></p>
+{% endblock content %}

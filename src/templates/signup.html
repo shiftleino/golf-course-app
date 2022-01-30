@@ -1,12 +1,15 @@
-<h1>Sign up</h1>
-<div class="error">{{ error }}</div>
-<form action="/signup" method="POST">
-    Username:<br>
-    <input type="text" name="username" size="15" minlength="3"><br>
-    Password:<br>
-    <input type="password" name="password" size="15" minlength="3"><br>
-    <input type="submit" value="Signup">
-</form>
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Sign up</h1>
+    <div class="error">{{ error }}</div>
+    <form action="/signup" method="POST">
+        Username:<br>
+        <input type="text" name="username" size="15" minlength="3"><br>
+        Password:<br>
+        <input type="password" name="password" size="15" minlength="3"><br>
+        <input type="submit" value="Signup">
+    </form>
 
-<p><a href="/login">Already an account? Go to login.</a></p>
-<p><a href="/">Back to front page.</a></p>
+    <p><a href="/login">Already an account? Go to login.</a></p>
+    <p><a href="/">Back to front page.</a></p>
+{% endblock content %}

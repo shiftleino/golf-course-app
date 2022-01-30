@@ -1,14 +1,14 @@
-<title>Golf Course App</title>
-<h1>Golf Course App</h1>
-
-{% if session.username %}
-<p>Welcome to the Golf Course App!</p>
-<p><a href="/courses">See All Golf Courses in Uusimaa.</a></p>
-</br>
-<p>You are logged in as {{ session.username }}</p>
-<a href="/logout">Logout</a>
-{% else %}
-<p>Please log in to your account or create a new account to use the application.</p>
-<p><a href="/login">Log in to your account</a></p>
-<p><a href="/signup">No account yet? Go to signup.</a></p>
-{% endif %}
+{% extends "layout.html" %}
+{% block content %}
+    {% if session.username %}
+    <p>Welcome to the Golf Course App!</p>
+    <p><a href="/courses">See All Golf Courses in Uusimaa.</a></p>
+    </br>
+    <p>You are logged in as {{ session.username }}</p>
+    <a href="/logout">Logout</a>
+    {% else %}
+    <p>Please log in to your account or create a new account to use the application.</p>
+    <p><a href="/login">Log in to your account</a></p>
+    <p><a href="/signup">No account yet? Go to signup.</a></p>
+    {% endif %}
+{% endblock content %}
