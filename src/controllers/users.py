@@ -1,9 +1,10 @@
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import session, abort
+from flask import session, abort, request
+import secrets
 from database.db import db
 
 def signup(username, password):
-    if len(username) < 3 or len(password) < 3:
+    if len(username) < 3 or len(password) < 3 or len(username) > 15 or len(password) > 15:
         return False
     hash_value = generate_password_hash(password)
     try:
@@ -26,6 +27,7 @@ def login(username, password):
             session["user_id"] = user.id
             session["username"] = username
             session["user_role"] = user.role
+            session["csrf_token"] = secrets.token_hex(16)
             return True
         return False
 
@@ -37,4 +39,8 @@ def logout():
 def require_login():
     user_id = session.get("user_id", 0)
     if user_id == 0:
+        abort(403)
+
+def check_csrf():
+    if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
