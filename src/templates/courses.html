@@ -3,21 +3,19 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Description</th>
+            <th>Distance from Helsinki</th>
+            <th>Greenfee</th>
         </tr>
     </thead>
     <tbody>
         {% for course in courses %}
             <tr>
                 <td>{{ course.name }}</td>
-                <td>Golf Course</td>
+                <td>{{ course.distance }}</td>
+                <td>{{ course.greenfee }}</td>
                 <td><button class="info_btn">More Information</button></td>
             </tr>
         {% endfor %}
-        <tr>
-            <td>Value</td>
-            <td>Value2</td>
-        </tr>
     </tbody>
 </table>
 

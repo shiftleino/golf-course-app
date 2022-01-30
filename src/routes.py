@@ -9,7 +9,7 @@ def index():
 @app.route("/courses")
 def courses():
     users.require_login()
-    all_courses = golf_courses.get_all_courses()
+    all_courses = golf_courses.get_basic_info()
     return render_template("courses.html", courses=all_courses)
 
 @app.route("/course/<int:id>")
