@@ -1,4 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>Course Information</h2>
+    <h2>{{ basic_info.name }} - Course Information</h2>
+    <div><b>Address:</b> {{ location_info.address }}, {{ location_info.municipality }}</div>
+    <div><b>Holes:</b> {{ basic_info.holes }}</div>
+    <div><b>Distance from Helsinki:</b> {{ location_info.distance }} km</div>
+    <div><b>Drive time from Helsinki:</b> {{ location_info.drive_time }} minutes</div>
+    <div><b>Website:</b> <a href="{{ basic_info.link }}">{{ basic_info.link }}</a></div>
+    <h3>Green fees</h3>
+    <ul>
+    {% for price in price_info %}
+        <li>{{ price.key  }}: {{price.value }}</li>
+    {% endfor %}
+    </ul>
+    <p><a href="/courses">Back to all courses.</a></p>
 {% endblock content %}
