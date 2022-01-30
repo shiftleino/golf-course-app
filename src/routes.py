@@ -12,10 +12,13 @@ def courses():
     all_courses = golf_courses.get_basic_info()
     return render_template("courses.html", courses=all_courses)
 
-@app.route("/course/<int:id>")
-def course(id):
+@app.route("/courses/<int:course_id>", methods=["GET", "POST"])
+def course(course_id):
     users.require_login()
-    return f"{id}"
+    basic_data = golf_courses.get_course_info(course_id)
+    location_data = golf_courses.get_location_info(course_id)
+    price_data = golf_courses.get_price_info(course_id)
+    return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
