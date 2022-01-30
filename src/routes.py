@@ -6,11 +6,13 @@ from controllers import golf_courses, users
 def index():
     return render_template("index.html")
 
-@app.route("/courses")
+@app.route("/courses", methods=["GET", "POST"])
 def courses():
     users.require_login()
+    if request.method == "POST":
+        users.check_csrf()
     all_courses = golf_courses.get_basic_info()
-    return render_template("courses.html", courses=all_courses)
+    return render_template("courses.html", courses=all_courses, role=session["user_role"])
 
 @app.route("/courses/<int:course_id>", methods=["GET", "POST"])
 def course(course_id):

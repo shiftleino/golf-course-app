@@ -19,6 +19,12 @@
                         <form action="/courses/{{ course.id }}" method="POST">
                             <button type="submit">More Information</button>
                     </td>
+                    {% if role == 1 %}
+                    <td>
+                        <form action="/courses/{{ course.id }}" method="DELETE">
+                            <button type="submit">Delete</button>
+                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
@@ -26,3 +32,33 @@
 
     <p><a href="/">Back to front page.</a></p>
 {% endblock content %}
+{% block admin %}
+{% if role == 1 %}
+<hr>
+<h3>Add a Golf Course</h3>
+<form action="/courses" method="POST">
+    <fieldset>
+        <legend>Basic Information</legend>
+        <label for="name">The name of the course: </label>
+        <input type="text" name="name"><br><br>
+        <label for="holes">Number of holes: </label>
+        <input type="text" name="holes"><br><br>
+        <label for="link">Link to the website: </label>
+        <input type="text" name="link"><br><br>
+        <label for="address">The address of the course: </label>
+        <input type="text" name="address"><br><br>
+        <label for="lat">Latitude: </label>
+        <input type="text" name="lat"><br><br>
+        <label for="lon">Longitude: </label>
+        <input type="text" name="link"><br><br>
+        <label for="municipality">Municipality: </label>
+        <input type="text" name="municipality"><br><br>
+        <label for="distance">Distance from Helsinki: </label>
+        <input type="text" name="distance"><br><br>
+        <label for="drive">Drivetime from Helsinki: </label>
+        <input type="text" name="drive"><br><br>
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+{% endif %}
+{% endblock admin %}
