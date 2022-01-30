@@ -31,8 +31,9 @@ CREATE TABLE CoursePrices (
 CREATE TABLE CourseLocations (
     id SERIAL PRIMARY KEY,
     course_id INTEGER REFERENCES Courses,
-    latitude INTEGER,
-    longitude INTEGER,
+    address TEXT,
+    latitude DECIMAL,
+    longitude DECIMAL,
     municipality TEXT,
     distance INTEGER,
     drive_time INTEGER
