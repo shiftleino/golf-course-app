@@ -1,14 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
     {% if session.username %}
-    <p>Welcome to the Golf Course App!</p>
-    <p><a href="/courses">See All Golf Courses in Uusimaa.</a></p>
-    </br>
-    <p>You are logged in as {{ session.username }}</p>
-    <a href="/logout">Logout</a>
+    <div class="row">
+        <div class="col-8">
+            Welcome to the Golf Course App!<br>
+            <a href="/courses">See All Golf Courses in Uusimaa.</a>
+        </div>
+        <div class="col-4">
+            You are logged in as {{ session.username }}<br>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
     {% else %}
-    <p>Please log in to your account or create a new account to use the application.</p>
-    <p><a href="/login">Log in to your account</a></p>
-    <p><a href="/signup">No account yet? Go to signup.</a></p>
+    <div class="row">
+        <div>
+            <p>Please log in to your account or create a new account to use the application.</p>
+            <p><a href="/login">Log in to your account</a></p>
+            <p><a href="/signup">No account yet? Go to signup.</a></p>
+        </div>
+    </div>
     {% endif %}
 {% endblock content %}
