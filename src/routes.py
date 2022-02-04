@@ -31,13 +31,14 @@ def courses():
     all_courses = golf_courses.get_basic_info()
     return render_template("courses.html", courses=all_courses, role=session["user_role"])
 
-@app.route("/courses/<int:course_id>", methods=["GET", "POST"])
+@app.route("/courses/<int:course_id>", methods=["GET"])
 def course(course_id):
-    users.require_login()
-    basic_data = golf_courses.get_course_info(course_id)
-    location_data = golf_courses.get_location_info(course_id)
-    price_data = golf_courses.get_price_info(course_id)
-    return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data)
+    if request.method == "GET":
+        users.require_login()
+        basic_data = golf_courses.get_course_info(course_id)
+        location_data = golf_courses.get_location_info(course_id)
+        price_data = golf_courses.get_price_info(course_id)
+        return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
 
 @app.route("/remove/<int:course_id>", methods=["POST"])
 def remove(course_id):
@@ -45,6 +46,16 @@ def remove(course_id):
     users.check_csrf()
     golf_courses.delete_course(course_id)
     return redirect("/courses")
+
+@app.route("/courses/<int:course_id>/prices", methods=["POST"])
+def add_greenfee(course_id):
+    users.require_role(1)
+    users.check_csrf()
+    key = request.form["name"]
+    value = request.form["price"]
+    golf_courses.add_greenfee(course_id, key, value)
+    return redirect(f"/courses/{course_id}")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

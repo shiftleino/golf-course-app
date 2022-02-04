@@ -75,3 +75,11 @@ def delete_course(course_id):
     """
     db.session.execute(sql, {"course_id": course_id})
     db.session.commit()
+
+def add_greenfee(course_id, key, value):
+    sql = """
+    INSERT INTO CoursePrices (course_id, key, value)
+    VALUES (:course_id, :key, :value);
+    """
+    db.session.execute(sql, {"course_id": course_id, "key": key, "value": value})
+    db.session.commit()
