@@ -22,8 +22,9 @@
                     </td>
                     {% if role == 1 %}
                     <td>
-                        <form action="/courses/{{ course.id }}" method="DELETE">
+                        <form action="/remove/{{ course.id }}" method="POST">
                             <button type="submit">Delete</button>
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                         </form>
                     </td>
                     {% endif %}

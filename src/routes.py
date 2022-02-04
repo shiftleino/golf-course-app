@@ -39,6 +39,13 @@ def course(course_id):
     price_data = golf_courses.get_price_info(course_id)
     return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data)
 
+@app.route("/remove/<int:course_id>", methods=["POST"])
+def remove(course_id):
+    users.require_role(1)
+    users.check_csrf()
+    golf_courses.delete_course(course_id)
+    return redirect("/courses")
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":

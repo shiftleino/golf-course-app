@@ -68,3 +68,10 @@ def add_course(data):
     """
     db.session.execute(sql, {"id": course_id, "address": data["address"], "lat": float(data["lat"]), "lon": float(data["lon"]), "municipality": data["municipality"], "distance": int(data["distance"]), "drive_time": int(data["drive_time"])})
     db.session.commit()
+
+def delete_course(course_id):
+    sql = """
+    DELETE FROM Courses WHERE id=:course_id;
+    """
+    db.session.execute(sql, {"course_id": course_id})
+    db.session.commit()
