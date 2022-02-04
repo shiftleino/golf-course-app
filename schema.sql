@@ -14,8 +14,8 @@ CREATE TABLE Courses (
 
 CREATE TABLE Reviews (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES Users,
-    course_id INTEGER REFERENCES Courses,
+    user_id INTEGER REFERENCES Users ON DELETE CASCADE,
+    course_id INTEGER REFERENCES Courses ON DELETE CASCADE,
     rating INTEGER,
     comment TEXT,
     sent_at TIMESTAMP
@@ -23,14 +23,14 @@ CREATE TABLE Reviews (
 
 CREATE TABLE CoursePrices (
     id SERIAL PRIMARY KEY,
-    course_id INTEGER REFERENCES Courses,
+    course_id INTEGER REFERENCES Courses ON DELETE CASCADE,
     key TEXT,
     value INTEGER
 );
 
 CREATE TABLE CourseLocations (
     id SERIAL PRIMARY KEY,
-    course_id INTEGER REFERENCES Courses,
+    course_id INTEGER REFERENCES Courses ON DELETE CASCADE,
     address TEXT,
     latitude DECIMAL,
     longitude DECIMAL,
