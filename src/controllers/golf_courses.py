@@ -45,7 +45,7 @@ def get_location_info(course_id):
 
 def get_price_info(course_id):
     sql = """
-    SELECT key, value
+    SELECT id, key, value
     FROM CoursePrices
     WHERE course_id=:id
     """
@@ -82,4 +82,11 @@ def add_greenfee(course_id, key, value):
     VALUES (:course_id, :key, :value);
     """
     db.session.execute(sql, {"course_id": course_id, "key": key, "value": value})
+    db.session.commit()
+
+def delete_greenfee(price_id):
+    sql = """
+    DELETE FROM CoursePrices WHERE id=:price_id;
+    """
+    db.session.execute(sql, {"price_id": price_id})
     db.session.commit()
