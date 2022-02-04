@@ -22,6 +22,7 @@
     <p><a href="/courses">Back to all courses.</a></p>
     {% if role == 1 %}
     <hr>
+    <div class="error">{{ error }}</div>
         <form action="/courses/{{ course }}/prices" method="POST">
             <fieldset>
                 <legend>Add a new Green fee</legend>

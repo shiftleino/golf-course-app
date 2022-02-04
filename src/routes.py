@@ -53,9 +53,15 @@ def add_greenfee(course_id):
     users.check_csrf()
     key = request.form["name"]
     value = request.form["price"]
-    golf_courses.add_greenfee(course_id, key, value)
-    return redirect(f"/courses/{course_id}")
-
+    if value.isnumeric():
+        golf_courses.add_greenfee(course_id, key, value)
+        return redirect(f"/courses/{course_id}")
+    else:
+        users.require_login()
+        basic_data = golf_courses.get_course_info(course_id)
+        location_data = golf_courses.get_location_info(course_id)
+        price_data = golf_courses.get_price_info(course_id)
+        return render_template("course.html", error="Adding the Green fee failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
