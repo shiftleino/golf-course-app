@@ -28,7 +28,8 @@ def courses():
         except:
             all_courses = golf_courses.get_basic_info()
             return render_template("courses.html", courses=all_courses, role=session["user_role"], error="Something went wrong when adding the golf course.")
-    all_courses = golf_courses.get_basic_info()
+    order = request.args["sorting"]
+    all_courses = golf_courses.get_basic_info(order)
     return render_template("courses.html", courses=all_courses, role=session["user_role"])
 
 @app.route("/courses/<int:course_id>", methods=["GET", "POST"])

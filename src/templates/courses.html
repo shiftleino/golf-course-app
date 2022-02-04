@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
     <h2>Golf Courses in Uusimaa, Finland</h2>
+    <form action="/courses" method="GET">
+        <div>Sorting by: </div>
+        <input type="radio" name="sorting" value="name">
+        <label for="name">Name</label>
+        <input type="radio" name="sorting" value="distance">
+        <label for="distance">Distance</label>
+        <input type="radio" name="sorting" value="greenfee">
+        <label for="greenfee">Green fee</label>
+        <button type="submit">Sort</button>
+    </form><br>
     <table>
         <thead>
             <tr>
