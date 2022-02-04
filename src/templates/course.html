@@ -23,6 +23,31 @@
     {% if role == 1 %}
     <hr>
     <div class="error">{{ error }}</div>
+        <form action="/courses/{{ course }}" method="POST">
+            <fieldset>
+                <legend>Change Information</legend>
+                <label for="name">The name of the course: </label>
+                <input type="text" name="name"><br><br>
+                <label for="holes">Number of holes: </label>
+                <input type="text" name="holes"><br><br>
+                <label for="link">Link to the website: </label>
+                <input type="text" name="link"><br><br>
+                <label for="address">The address of the course: </label>
+                <input type="text" name="address"><br><br>
+                <label for="lat">Latitude: </label>
+                <input type="text" name="lat"><br><br>
+                <label for="lon">Longitude: </label>
+                <input type="text" name="lon"><br><br>
+                <label for="municipality">Municipality: </label>
+                <input type="text" name="municipality"><br><br>
+                <label for="distance">Distance from Helsinki: </label>
+                <input type="text" name="distance"><br><br>
+                <label for="drive_time">Time to drive from Helsinki: </label>
+                <input type="text" name="drive_time"><br><br>
+                <input type="submit" value="Submit">
+                <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+            </fieldset>
+        </form><br>
         <form action="/courses/{{ course }}/prices" method="POST">
             <fieldset>
                 <legend>Add a new Green fee</legend>

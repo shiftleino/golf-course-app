@@ -90,3 +90,23 @@ def delete_greenfee(price_id):
     """
     db.session.execute(sql, {"price_id": price_id})
     db.session.commit()
+
+def change_info(data, course_id):
+    sql = """
+    UPDATE Courses
+    SET name=:name, holes=:holes, link=:link
+    WHERE id=:course_id
+    """
+    db.session.execute(sql, {"name": data["name"], "holes": int(data["holes"]), "link": data["link"], "course_id": course_id})
+    sql = """
+    UPDATE CourseLocations
+    SET address=:address, 
+        latitude=:lat,
+        longitude=:lon,
+        municipality=:municipality,
+        distance=:distance,
+        drive_time=:drive_time
+    WHERE course_id=:course_id
+    """
+    db.session.execute(sql, {"course_id": course_id, "address": data["address"], "lat": float(data["lat"]), "lon": float(data["lon"]), "municipality": data["municipality"], "distance": int(data["distance"]), "drive_time": int(data["drive_time"])})
+    db.session.commit()

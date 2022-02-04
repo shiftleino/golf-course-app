@@ -31,7 +31,7 @@ def courses():
     all_courses = golf_courses.get_basic_info()
     return render_template("courses.html", courses=all_courses, role=session["user_role"])
 
-@app.route("/courses/<int:course_id>", methods=["GET"])
+@app.route("/courses/<int:course_id>", methods=["GET", "POST"])
 def course(course_id):
     if request.method == "GET":
         users.require_login()
@@ -39,6 +39,30 @@ def course(course_id):
         location_data = golf_courses.get_location_info(course_id)
         price_data = golf_courses.get_price_info(course_id)
         return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+    elif request.method == "POST":
+        users.check_csrf()
+        users.require_role(1)
+        try:
+            data = {
+                "name": request.form["name"],
+                "holes": request.form["holes"],
+                "link": request.form["link"],
+                "address": request.form["address"],
+                "lat": request.form["lat"],
+                "lon": request.form["lon"],
+                "municipality": request.form["municipality"],
+                "distance": request.form["distance"],
+                "drive_time": request.form["drive_time"]
+            }
+            golf_courses.change_info(data, course_id)
+            return redirect(f"/courses/{course_id}")
+        except:
+            users.require_login()
+            basic_data = golf_courses.get_course_info(course_id)
+            location_data = golf_courses.get_location_info(course_id)
+            price_data = golf_courses.get_price_info(course_id)
+            return render_template("course.html", error="Updating the information failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+
 
 @app.route("/remove/<int:course_id>", methods=["POST"])
 def remove(course_id):
