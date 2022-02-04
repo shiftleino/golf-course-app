@@ -28,7 +28,9 @@ def courses():
         except:
             all_courses = golf_courses.get_basic_info()
             return render_template("courses.html", courses=all_courses, role=session["user_role"], error="Something went wrong when adding the golf course.")
-    order = request.args["sorting"]
+    order = "name"
+    if len(request.args) == 1:
+        order = request.args["sorting"]
     all_courses = golf_courses.get_basic_info(order)
     return render_template("courses.html", courses=all_courses, role=session["user_role"])
 
