@@ -1,22 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% if session.username %}
-    <div class="row">
-        <div class="col-8">
-            Welcome to the Golf Course App!<br>
-            <a href="/courses">See All Golf Courses in Uusimaa.</a>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 text-center">
+            <h3>Welcome to the Golf Course App!</h3>
         </div>
-        <div class="col-4">
-            You are logged in as {{ session.username }}<br>
-            <a href="/logout">Logout</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            With this golf course app you can view all the golf courses and their information in Uusimaa, Finland.
+        </div>
+    </div>
+    <br>
+    {% if session.username %}
+    <div class="row justify-content-md-center">
+        <div class="col-auto">
+            <form action="/courses" method="GET">
+                <button type="submit">Golf courses in Uusimaa, Finland</button>
+            </form>
         </div>
     </div>
     {% else %}
-    <div class="row">
-        <div>
-            <p>Please log in to your account or create a new account to use the application.</p>
-            <p><a href="/login">Log in to your account</a></p>
-            <p><a href="/signup">No account yet? Go to signup.</a></p>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 text-center">
+            Please log in to your account or create a new account to use the application.
+        </div>
+    </div>
+    <br>    
+    <div class="row justify-content-center">
+            <form action="/login" method="GET">
+                <button type="submit" class="btn btn-custom">Log in</button>
+            </form>
+        <div class="col-auto">
+            <form action="/signup" method="GET">
+                    <button type="submit" class="btn btn-custom">Sign up</button>
+            </form>
         </div>
     </div>
     {% endif %}

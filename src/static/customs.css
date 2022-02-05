@@ -1,7 +1,29 @@
+p, div {
+    font-family: 'Signika', Georgia, sans-serif;
+    color: white;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', Georgia, 'Times New Roman', Times, serif;
 }
 
-p, div {
-    font-family: 'Signika', Georgia, sans-serif;
+h3 {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+body {
+    background-color: #1A1A1D;
+}
+
+.btn-custom {
+    background-color: #3500D3;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #3500F9;
+    color: white;
 }
