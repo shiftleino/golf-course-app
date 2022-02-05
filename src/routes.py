@@ -66,7 +66,6 @@ def course(course_id):
             price_data = golf_courses.get_price_info(course_id)
             return render_template("course.html", error="Updating the information failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
 
-
 @app.route("/remove/<int:course_id>", methods=["POST"])
 def remove(course_id):
     users.require_role(1)
@@ -82,13 +81,7 @@ def add_greenfee(course_id):
     value = request.form["price"]
     if key and value and value.isnumeric():
         golf_courses.add_greenfee(course_id, key, value)
-        return redirect(f"/courses/{course_id}")
-    else:
-        users.require_login()
-        basic_data = golf_courses.get_course_info(course_id)
-        location_data = golf_courses.get_location_info(course_id)
-        price_data = golf_courses.get_price_info(course_id)
-        return render_template("course.html", error="Adding the Green fee failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+    return redirect(f"/courses/{course_id}")
 
 @app.route("/courses/<int:course_id>/prices/<int:price_id>", methods=["POST"])
 def remove_greenfee(course_id, price_id):
