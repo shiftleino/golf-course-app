@@ -54,7 +54,7 @@
 <hr>
 <br>
 <div class="row justify-content-center">
-    <div class="col-auto">
+    <div class="col-auto error">
         {{ error }}
     </div>
 </div>
@@ -113,13 +113,6 @@
     <button type="submit" class="btn btn-custom btn-form">Submit</button>
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
-
-
-
-
-
-
-       
-</form>
+<br>
 {% endif %}
 {% endblock admin %}
