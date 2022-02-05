@@ -80,7 +80,7 @@ def add_greenfee(course_id):
     users.check_csrf()
     key = request.form["name"]
     value = request.form["price"]
-    if value.isnumeric():
+    if key and value and value.isnumeric():
         golf_courses.add_greenfee(course_id, key, value)
         return redirect(f"/courses/{course_id}")
     else:
