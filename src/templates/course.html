@@ -1,25 +1,56 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>{{ basic_info.name }} - Course Information</h2>
-    <div><b>Address:</b> {{ location_info.address }}, {{ location_info.municipality }}</div>
-    <div><b>Holes:</b> {{ basic_info.holes }}</div>
-    <div><b>Distance from Central Helsinki:</b> {{ location_info.distance }} km</div>
-    <div><b>Drive time from Central Helsinki:</b> {{ location_info.drive_time }} minutes</div>
-    <div><b>Website:</b> <a href="{{ basic_info.link }}">{{ basic_info.link }}</a></div>
-    <h3>Green fees</h3>
-    <ul>
-    {% for price in price_info %}
-        <li>{{ price.key  }}: {{price.value }}
-            {% if role == 1 %}
-                <form action="/courses/{{ course }}/prices/{{ price.id }}" method="POST">
-                    <button type="submit">Delete</button>
-                    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-                </form>
-            {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
-    <p><a href="/courses">Back to all courses.</a></p>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 text-center">
+            <h3>{{ basic_info.name }} - Course Information</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            Holes: {{ basic_info.holes }}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            Address: {{ location_info.address }}, {{ location_info.municipality }}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            Distance from Central Helsinki: {{ location_info.distance }} km
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            Drive time from Central Helsinki: {{ location_info.drive_time }} minutes
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            Website: <a href="{{ basic_info.link }}">{{ basic_info.link }}</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h3>Green fees</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <ul>
+            {% for price in price_info %}
+                <li class="col-auto">{{ price.key  }}: {{price.value }} €
+                    {% if role == 1 %}
+                        <form action="/courses/{{ course }}/prices/{{ price.id }}" method="POST">
+                            <button type="submit">Delete</button>
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+    </div>
     {% if role == 1 %}
     <hr>
     <div class="error">{{ error }}</div>
