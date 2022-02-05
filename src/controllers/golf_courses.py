@@ -1,6 +1,6 @@
 from database.db import db
 
-def get_basic_info(order):
+def get_basic_info(order="name"):
     if order == "distance":
         sql = """
         SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id)
