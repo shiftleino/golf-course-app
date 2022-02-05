@@ -38,7 +38,7 @@
                     {% if role == 1 %}
                     <td>
                         <form action="/remove/{{ course.id }}" method="POST">
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="btn btn-custom btn-small">Delete</button>
                             <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                         </form>
                     </td>
