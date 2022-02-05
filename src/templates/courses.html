@@ -25,8 +25,11 @@
         <thead class="thead thead-light">
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Distance from Helsinki</th>
-                <th scope="col">Greenfee</th>
+                <th scope="col">Distance from Helsinki (min)</th>
+                <th scope="col">Greenfee (Eur)</th>
+                {% if role == 1 %}
+                <th scope="col">Delete</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
