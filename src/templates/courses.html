@@ -50,33 +50,76 @@
 {% endblock content %}
 {% block admin %}
 {% if role == 1 %}
+<br>
 <hr>
-<p>{{ error }}</p>
-<h3>Add a Golf Course</h3>
+<br>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        {{ error }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <h3>Add a Golf Course</h3>
+    </div>
+</div>
 <form action="/courses" method="POST">
-    <fieldset>
-        <legend>Basic Information</legend>
-        <label for="name">The name of the course: </label>
-        <input type="text" name="name"><br><br>
-        <label for="holes">Number of holes: </label>
-        <input type="text" name="holes"><br><br>
-        <label for="link">Link to the website: </label>
-        <input type="text" name="link"><br><br>
-        <label for="address">The address of the course: </label>
-        <input type="text" name="address"><br><br>
-        <label for="lat">Latitude: </label>
-        <input type="text" name="lat"><br><br>
-        <label for="lon">Longitude: </label>
-        <input type="text" name="lon"><br><br>
-        <label for="municipality">Municipality: </label>
-        <input type="text" name="municipality"><br><br>
-        <label for="distance">Distance from Helsinki: </label>
-        <input type="text" name="distance"><br><br>
-        <label for="drive_time">Time to drive from Helsinki: </label>
-        <input type="text" name="drive_time"><br><br>
-        <input type="submit" value="Submit">
-        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-    </fieldset>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label for="name">The name of the course:</label><br>
+            <input type="text" name="name">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label for="holes">Number of holes:</label><br>
+            <input type="text" name="holes">
+        </div>
+        <div class="form-group col-auto">
+            <label for="link">Link to the website:</label><br>
+            <input type="text" name="link">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label for="address">The address of the course:</label><br>
+            <input type="text" name="address">
+        </div>
+        <div class="form-group col-auto">
+            <label for="municipality">Municipality:</label><br>
+            <input type="text" name="municipality">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto"> 
+            <label for="lat">Latitude:</label><br>
+            <input type="text" name="lat">
+        </div>
+        <div class="form-group col-auto">
+            <label for="lon">Longitude:</label><br>
+            <input type="text" name="lon">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-auto">
+            <label for="distance">Distance from Helsinki:</label><br>
+            <input type="text" name="distance">
+        </div>
+        <div class="form-group col-auto">
+            <label for="drive_time">Drivetime from Helsinki:</label><br>
+            <input type="text" name="drive_time">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-custom btn-form">Submit</button>
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</form>
+
+
+
+
+
+
+       
 </form>
 {% endif %}
 {% endblock admin %}
