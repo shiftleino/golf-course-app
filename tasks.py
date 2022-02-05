@@ -4,3 +4,8 @@ from invoke import task
 @task
 def start(ctx):
     ctx.run("flask run")
+
+# FOR USING PYLINT
+@task
+def lint(ctx):
+    ctx.run("pylint src")
