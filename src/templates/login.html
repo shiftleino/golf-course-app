@@ -1,20 +1,38 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>Log in</h2>
-    <div class="error">{{ error }}</div>
-    <form action="/login" method="POST">
-        <div class="form-group col-6">
-            Username:<br>
-            <input type="text" name="username" size="15" minlength="3" maxlength="15"><br>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h2>Log in</h2>
         </div>
-        <div class="form-group col-6">
-            Password:<br>
-            <input type="password" name="password" size="15" minlength="3" maxlength="15"><br>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center error">
+            {{ error }}
         </div>
-        <div class="form-group col-6">
-            <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+    <div class="row justify-content-center">
+        <form action="/login" method="POST">
+            <div class="form-group col-auto">
+                Username:<br>
+                <input type="text" class="custom-form" name="username" size="15" minlength="3" maxlength="15"><br>
+            </div>
+            <div class="form-group col-auto">
+                Password:<br>
+                <input type="password" class="custom-form" name="password" size="15" minlength="3" maxlength="15"><br>
+            </div>
+            <div class="form-group col-auto">
+                <button type="submit" class="btn btn-primary btn-custom btn-form">Login</button>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="/signup">No account yet? Go to signup.</a>
         </div>
-    </form>
-    <p><a href="/signup">No account yet? Go to signup.</a></p>
-    <p><a href="/">Back to front page.</a></p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="/">Back to Home page.</a>
+        </div>
+    </div>
 {% endblock content %}
