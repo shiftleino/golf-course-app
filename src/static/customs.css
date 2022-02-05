@@ -42,6 +42,11 @@ hr {
     height: 40px;
 }
 
+.btn-small {
+    height: 40px;
+    width: 80px;
+}
+
 .custom-form {
     width: 360px;
     height: 40px;
@@ -49,4 +54,8 @@ hr {
 
 .error {
     color: rgb(187, 52, 52);
+}
+
+.table {
+    background-color: #1A1A1D;
 }
