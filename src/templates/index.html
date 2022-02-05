@@ -7,15 +7,15 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            With this golf course app you can view all the golf courses and their information in Uusimaa, Finland.
+            With this golf course app you can view all the golf courses and their information in Uusimaa, Finland. You can for example sort the golf courses by their Green fees or the distance from the Central Helsinki.
         </div>
     </div>
     <br>
     {% if session.username %}
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-center">
         <div class="col-auto">
             <form action="/courses" method="GET">
-                <button type="submit">Golf courses in Uusimaa, Finland</button>
+                <button type="submit" class="btn btn-custom btn-form">Golf courses in Uusimaa, Finland</button>
             </form>
         </div>
     </div>
