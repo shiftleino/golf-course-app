@@ -29,6 +29,9 @@ Käyttäjä voi:
 Ylläpitäjä voi:
 - Poistaa käyttäjien antamia arvioita.
 
+## Tietojen muoto
+Sovelluksessa etäisyys Helsingin keskustasta on ilmoitettu kokonaislukuna. Matka-aika Helsingistä on nopein matka-aika autolla ilmoitettuna minuuteissa ja niin ikään kokonaislukuna.
+
 ### Työkalut
 - Python
 - Flask
