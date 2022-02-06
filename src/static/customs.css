@@ -52,6 +52,10 @@ hr {
     height: 40px;
 }
 
+.long-form {
+    width: 360px;
+}
+
 .error {
     color: #BB3434;
 }
