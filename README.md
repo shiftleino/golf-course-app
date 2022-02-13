@@ -19,7 +19,7 @@ Ylläpitäjä voi käyttäjän toiminnallisuuksien lisäksi:
 - Muuttaa golf-kenttien tietoja
 
 ### Toiminnallisuuksien testaus
-Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. Ylläpitäjän toiminnallisuuksien testaamiseksi käyttäjä tarvitsee admin-tilin. Kurssin arviointia varten voi käyttää seuraavia tunnuksia: admin, nimda1234. Älä kuitenkaan poista tietokannassa valmiina olevia kenttiä.
+Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. 
 
 ### Tulevat toiminnallisuudet
 Käyttäjä voi:
