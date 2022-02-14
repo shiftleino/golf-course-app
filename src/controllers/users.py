@@ -1,7 +1,7 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import session, abort, request
 import secrets
-from src.database.db import db
+from database.db import db
 
 def signup(username, password):
     if len(username) < 3 or len(password) < 3 or len(username) > 15 or len(password) > 15:

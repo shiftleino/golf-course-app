@@ -1,23 +1,23 @@
-from src.database.db import db
+from database.db import db
 
 def get_basic_info(order="name"):
     if order == "distance":
         sql = """
-        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id)
+        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id LIMIT 1)
         FROM Courses as C, CourseLocations AS L
         WHERE C.id=L.course_id
         ORDER BY L.distance;
         """
     elif order == "greenfee":
         sql = """
-        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id)
+        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id LIMIT 1)
         FROM Courses as C, CourseLocations AS L
         WHERE C.id=L.course_id
         ORDER BY greenfee;
         """
     else:
         sql = """
-        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id)
+        SELECT C.id, C.name, L.distance, (SELECT value AS greenfee FROM CoursePrices WHERE key='Green fee' AND course_id=C.id LIMIT 1)
         FROM Courses as C, CourseLocations AS L
         WHERE C.id=L.course_id
         ORDER BY C.name;
