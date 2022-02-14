@@ -56,6 +56,14 @@
             {% endfor %}
             </ul>
     </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <form action="/courses/{{ course }}/reviews" method="GET">
+                <button type="submit" class="btn btn-custom btn-form">Write a Review</button>
+            </form>
+        </div>
+    </div>
     {% if role == 1 %}
     <br>
     <hr>
@@ -123,7 +131,10 @@
     <br>
     <div class="form-row justify-content-center">
         <div class="col-auto">
-            <h4>Add a new Green fee</h4><br>
+            <h4>Add a new Green fee</h4>
+            <em>If you want the green fee to show in the golf courses table,<br>
+            set the name as "Green fee" (case-sensitive).</em><br>
+            </p>
             <form action="/courses/{{ course }}/prices" method="POST">
                 <div class="form-group col-auto">
                     <label for="name">Name:</label><br>
