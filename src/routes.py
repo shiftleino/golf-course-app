@@ -67,8 +67,22 @@ def course(course_id):
             return render_template("course.html", error="Updating the information failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
 
 @app.route("/courses/<int:course_id>/reviews", methods=["POST"])
-def review(course_id):
-    pass
+def add_review(course_id):
+    users.require_login()
+    users.check_csrf()
+    comment = request.form["comment"]
+    rating = request.form["rating"]
+    user_id = session["user_id"]
+    if rating.isnumeric() and comment != "":
+        data = {
+            "user_id": user_id,
+            "course_id": course_id,
+            "comment": comment,
+            "rating": rating,
+        }
+        reviews.add_review(data)
+    else:
+        return redirect(f"/courses/{course_id}")
 
 @app.route("/courses/<int:course_id>/reviews/<int:review_id>", methods=["POST"])
 def remove_review(course_id, review_id):
