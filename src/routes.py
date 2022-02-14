@@ -1,6 +1,6 @@
 from flask import render_template, request, session, redirect
-from src.app import app
-from src.controllers import golf_courses, users
+from app import app
+from controllers import golf_courses, users, reviews
 
 @app.route("/")
 def index():
@@ -65,6 +65,18 @@ def course(course_id):
             location_data = golf_courses.get_location_info(course_id)
             price_data = golf_courses.get_price_info(course_id)
             return render_template("course.html", error="Updating the information failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+
+@app.route("/courses/<int:course_id>/reviews", methods=["POST"])
+def review(course_id):
+    pass
+
+@app.route("/courses/<int:course_id>/reviews/<int:review_id>", methods=["POST"])
+def remove_review(course_id, review_id):
+    users.require_role(1)
+    users.check_csrf()
+    reviews.remove_review(review_id)
+    return redirect(f"/courses/{course_id}")
+
 
 @app.route("/remove/<int:course_id>", methods=["POST"])
 def remove(course_id):
