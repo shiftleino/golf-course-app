@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <h3>{{ name }} - Reviews</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h4>Reviews from Other Users</h4>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4>Write Your Review</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <p>Some Review...</p>
+        </div>
+        <div class="col-md-6">
+            <form action="/courses/{{ course }}/reviews" method="POST">
+                <div class="form-group col-auto">
+                    Comment<br>
+                    <textarea class="form-control custom-textarea" id="commentReview" name="comment" rows="3"></textarea><br>
+                </div>
+                <div class="form-group col-auto">
+                    Rating<br>
+                    <input type="range" class="form-control-range" id="formControlRange" min="0" max="10" step="1" onchange="updateReview(this.value);">
+                    Current rating: <output type="text" id="reviewInput" value="" class="center">5</output>
+                </div>
+                <script>
+                    const updateReview = (value) => {
+                        document.getElementById("reviewInput").value = value;
+                    }
+                </script>
+                <div class="form-group col-auto">
+                    <button type="submit" class="btn btn-custom btn-form">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if role == 1 %}
+        <p>Hello admin!</p>
+    {% endif %}
+{% endblock content %}
