@@ -63,3 +63,7 @@ hr {
 .table {
     background-color: #1A1A1D;
 }
+
+.custom-textarea {
+    width: 510px;
+}
