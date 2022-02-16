@@ -1,4 +1,4 @@
-from database.db import db
+from src.database.db import db
 
 def get_basic_info(order="name"):
     if order == "distance":
