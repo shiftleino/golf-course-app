@@ -60,6 +60,10 @@ hr {
     color: #BB3434;
 }
 
+.success {
+    color: green;
+}
+
 .table {
     background-color: #1A1A1D;
 }
