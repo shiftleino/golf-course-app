@@ -29,8 +29,17 @@
                     <br>
                     <br>
                     Rating: {{ review.rating }}/10
-                    <br>
-                    <br>
+                    {% if role == 1 %}
+                    <div class="text-right">
+                        <form action="/courses/{{ course }}/reviews/{{ review.id }}" method="POST">
+                            <button type="submit" class="btn btn-custom btn-small">Delete</button>
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                        </form>
+                    </div>
+                    {% else %}
+                        <br>
+                        <br>
+                    {% endif %}
                     <div class="timestamp">
                         <em>
                             Sent at: {{ review.sent_at.date() }}
@@ -65,7 +74,4 @@
             </form>
         </div>
     </div>
-    {% if role == 1 %}
-        <p>Hello admin!</p>
-    {% endif %}
 {% endblock content %}
