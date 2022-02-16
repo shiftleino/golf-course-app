@@ -71,3 +71,6 @@ hr {
 .custom-textarea {
     width: 510px;
 }
+.timestamp {
+    font-size: 14px;
+}
