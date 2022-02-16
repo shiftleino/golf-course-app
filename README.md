@@ -13,21 +13,16 @@ Käyttäjä voi:
     - Kuinka monta reikää kentällä on
     - Linkki kentän nettisivuille.
 - Tarkastella kenttiä yhdestä listasta etäisyyden tai hinnaston mukaisessa järjestyksessä.
+- Antaa arvion yksittäisestä kentästä
+- Tarkastella muiden käyttäjien antamia arvioita
 
 Ylläpitäjä voi käyttäjän toiminnallisuuksien lisäksi:
 - Lisätä ja poistaa golf-kenttiä
 - Muuttaa golf-kenttien tietoja
+- Poistaa käyttäjien antamia arvioita.
 
 ### Toiminnallisuuksien testaus
-Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. 
-
-### Tulevat toiminnallisuudet
-Käyttäjä voi:
-- Antaa arvion yksittäisestä kentästä
-- Tarkastella muiden käyttäjien antamia arvioita
-
-Ylläpitäjä voi:
-- Poistaa käyttäjien antamia arvioita.
+Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. Yksittäisen kentän sivulta käyttäjä pääsee myös katsomaan muiden käyttäjien antamia arvioita ja lisäämään oman arvionsa muiden nähtäville. Ylläpitäjän toiminnallisuuksia voi kurssin arvioinnissa testata käyttämällä seuraavia tunnuksia: admin, nimda1234. Älä kuitenkaan poista jo lisättyjä oikeita kenttiä.
 
 ### Tietojen muoto
 Sovelluksessa etäisyys Helsingin keskustasta on ilmoitettu kokonaislukuna. Matka-aika Helsingistä on nopein matka-aika autolla ilmoitettuna minuuteissa ja niin ikään kokonaislukuna.
