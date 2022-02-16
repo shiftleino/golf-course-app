@@ -70,8 +70,8 @@ def course(course_id):
 def review(course_id):
     users.require_login()
     name = golf_courses.get_course_info(course_id).name
-    all_reviews = reviews.get_reviews()
     if request.method == "GET":
+        all_reviews = reviews.get_reviews()
         return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"])
     elif request.method == "POST":
         users.check_csrf()
@@ -86,11 +86,11 @@ def review(course_id):
                 "rating": rating,
             }
             reviews.add_review(data)
+            all_reviews = reviews.get_reviews()
             return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], message="Review added successfully")
         except:
+            all_reviews = reviews.get_reviews()
             return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], error="Something went wrong when adding the review")
-
-        
 
 @app.route("/courses/<int:course_id>/reviews/<int:review_id>", methods=["POST"])
 def remove_review(course_id, review_id):
