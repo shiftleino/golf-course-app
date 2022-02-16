@@ -15,8 +15,30 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 text-center">
-            <p>Some Review...</p>
+        <div class="col-md-6">
+            <br>
+            <hr>
+            {% for review in reviews %}
+                <div>
+                    Comment:<br>
+                    {% if review.comment.rstrip() == "" %}
+                    <em>The user left no comment.</em>
+                    {% else %}
+                    {{ review.comment }}
+                    {% endif %}
+                    <br>
+                    <br>
+                    Rating: {{ review.rating }}/10
+                    <br>
+                    <br>
+                    <div class="timestamp">
+                        <em>
+                            Sent at: {{ review.sent_at.date() }}
+                        </em>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
         </div>
         <div class="col-md-6">
             <div class="success">{{ message }}</div>
