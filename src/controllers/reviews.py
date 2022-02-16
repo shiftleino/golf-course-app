@@ -8,12 +8,13 @@ def add_review(data):
     db.session.execute(sql, {"user_id": data["user_id"], "course_id": data["course_id"], "rating": int(data["rating"]), "comment": data["comment"]})
     db.session.commit()
 
-def get_reviews():
+def get_reviews(course_id):
     sql = """
     SELECT id, rating, comment, sent_at
-    FROM Reviews;
+    FROM Reviews
+    WHERE course_id=:course_id;
     """
-    result = db.session.execute(sql).fetchall()
+    result = db.session.execute(sql, {"course_id": course_id}).fetchall()
     return result
 
 def remove_review(review_id):
