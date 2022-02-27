@@ -24,6 +24,8 @@ def courses():
                 "distance": request.form["distance"],
                 "drive_time": request.form["drive_time"]
             }
+            if golf_courses.check_course_name(request.form["name"]):
+                raise Exception
             golf_courses.add_course(data)
         except:
             all_courses = golf_courses.get_basic_info()
