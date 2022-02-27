@@ -26,6 +26,9 @@
                 <h6 class="text-center">
                     Average rating: {{ average }}
                 </h6>
+                <h6 class="text-center">
+                    Number of reviewers: {{ count }}
+                </h6>
                 <br>
                 <hr>
                 {% for review in reviews %}
@@ -61,8 +64,8 @@
             {% endif %}
         </div>
         <div class="col-md-6">
-            <div class="success">{{ message }}</div>
-            <div class="error">{{ error }}</div>
+            <div class="text-center success">{{ message }}</div>
+            <div class="text-center error">{{ error }}</div>
             <form action="/courses/{{ course }}/reviews" method="POST">
                 <div class="form-group col-auto">
                     Comment<br>

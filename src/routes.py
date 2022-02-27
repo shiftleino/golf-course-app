@@ -73,7 +73,8 @@ def review(course_id):
     if request.method == "GET":
         all_reviews = reviews.get_reviews(course_id)
         average = reviews.get_average_rating(course_id)
-        return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], average=average)
+        count = reviews.get_count_reviewers(course_id)
+        return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], average=average, count=count)
     elif request.method == "POST":
         users.check_csrf()
         comment = request.form["comment"]
@@ -89,11 +90,13 @@ def review(course_id):
             reviews.add_review(data)
             all_reviews = reviews.get_reviews(course_id)
             average = reviews.get_average_rating(course_id)
-            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], message="Review added successfully", average=average)
+            count = reviews.get_count_reviewers(course_id)
+            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], message="Review added successfully", average=average, count=count)
         except:
             all_reviews = reviews.get_reviews(course_id)
             average = reviews.get_average_rating(course_id)
-            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], error="Something went wrong when adding the review", average=average)
+            count = reviews.get_count_reviewers(course_id)
+            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], error="Something went wrong when adding the review", average=average, count=count)
 
 @app.route("/courses/<int:course_id>/reviews/<int:review_id>", methods=["POST"])
 def remove_review(course_id, review_id):

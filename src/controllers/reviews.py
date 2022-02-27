@@ -32,3 +32,12 @@ def get_average_rating(course_id):
     """
     average = db.session.execute(sql, {"course_id": course_id}).fetchone()[0]
     return average
+
+def get_count_reviewers(course_id):
+    sql = """
+    SELECT COUNT(Distinct user_id)
+    FROM Reviews
+    WHERE course_id=:course_id;
+    """
+    count = db.session.execute(sql, {"course_id": course_id}).fetchone()[0]
+    return count
