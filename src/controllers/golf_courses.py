@@ -110,3 +110,12 @@ def change_info(data, course_id):
     """
     db.session.execute(sql, {"course_id": course_id, "address": data["address"], "lat": float(data["lat"]), "lon": float(data["lon"]), "municipality": data["municipality"], "distance": int(data["distance"]), "drive_time": int(data["drive_time"])})
     db.session.commit()
+
+def check_course_name(name):
+    sql = """
+    SELECT 1 FROM Courses WHERE name=:name
+    """
+    result = db.session.execute(sql, {"name": name}).fetchone()
+    if result:
+        return True
+    return False
