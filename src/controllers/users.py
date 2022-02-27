@@ -3,8 +3,10 @@ from flask import session, abort, request
 import secrets
 from database.db import db
 
-def signup(username, password):
+def signup(username, password, password2):
     if len(username) < 3 or len(password) < 3 or len(username) > 15 or len(password) > 15:
+        return False
+    if password != password2:
         return False
     hash_value = generate_password_hash(password)
     try:

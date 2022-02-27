@@ -142,9 +142,10 @@ def signup():
     elif request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        if users.signup(username, password):
+        password2 = request.form["password2"]
+        if users.signup(username, password, password2):
             return redirect("/")
-        return render_template("signup.html", error="Invalid username or password")
+        return render_template("signup.html", error="Invalid username/password or passwords didn't match.")
 
 @app.route("/logout")
 def logout():
