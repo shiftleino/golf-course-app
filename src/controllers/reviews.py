@@ -23,3 +23,12 @@ def remove_review(review_id):
     """
     db.session.execute(sql, {"review_id": review_id})
     db.session.commit()
+
+def get_average_rating(course_id):
+    sql = """
+    SELECT CAST(AVG(rating) AS DECIMAL(4, 2))
+    FROM Reviews
+    WHERE course_id=:course_id;
+    """
+    average = db.session.execute(sql, {"course_id": course_id}).fetchone()[0]
+    return average
