@@ -1,6 +1,6 @@
 from flask import render_template, request, session, redirect
-from app import app
-from controllers import golf_courses, users, reviews
+from src.app import app
+from src.controllers import golf_courses, users, reviews
 
 @app.route("/")
 def index():
