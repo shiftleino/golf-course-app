@@ -27,7 +27,9 @@ def courses():
             golf_courses.add_course(data)
         except:
             all_courses = golf_courses.get_basic_info()
-            return render_template("courses.html", courses=all_courses, role=session["user_role"], error="Something went wrong when adding the golf course.")
+            return render_template("courses.html", courses=all_courses, \
+                role=session["user_role"], \
+                error="Something went wrong when adding the golf course.")
     order = "name"
     if len(request.args) == 1:
         order = request.args["sorting"]
@@ -41,7 +43,9 @@ def course(course_id):
         basic_data = golf_courses.get_course_info(course_id)
         location_data = golf_courses.get_location_info(course_id)
         price_data = golf_courses.get_price_info(course_id)
-        return render_template("course.html", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+        return render_template("course.html", basic_info=basic_data, \
+            location_info=location_data, price_info=price_data, \
+            role=session["user_role"], course=course_id)
     elif request.method == "POST":
         users.check_csrf()
         users.require_role(1)
@@ -64,7 +68,10 @@ def course(course_id):
             basic_data = golf_courses.get_course_info(course_id)
             location_data = golf_courses.get_location_info(course_id)
             price_data = golf_courses.get_price_info(course_id)
-            return render_template("course.html", error="Updating the information failed. Check that the values make sense.", basic_info=basic_data, location_info=location_data, price_info=price_data, role=session["user_role"], course=course_id)
+            return render_template("course.html", \
+                error="Updating the information failed. Check that the values make sense.", \
+                basic_info=basic_data, location_info=location_data, \
+                price_info=price_data, role=session["user_role"], course=course_id)
 
 @app.route("/courses/<int:course_id>/reviews", methods=["GET", "POST"])
 def review(course_id):
@@ -74,7 +81,8 @@ def review(course_id):
         all_reviews = reviews.get_reviews(course_id)
         average = reviews.get_average_rating(course_id)
         count = reviews.get_count_reviewers(course_id)
-        return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], average=average, count=count)
+        return render_template("reviews.html", reviews=all_reviews, name=name, \
+            course=course_id, role=session["user_role"], average=average, count=count)
     elif request.method == "POST":
         users.check_csrf()
         comment = request.form["comment"]
@@ -91,12 +99,17 @@ def review(course_id):
             all_reviews = reviews.get_reviews(course_id)
             average = reviews.get_average_rating(course_id)
             count = reviews.get_count_reviewers(course_id)
-            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], message="Review added successfully", average=average, count=count)
+            return render_template("reviews.html", reviews=all_reviews, name=name, \
+                course=course_id, role=session["user_role"], \
+                message="Review added successfully", average=average, count=count)
         except:
             all_reviews = reviews.get_reviews(course_id)
             average = reviews.get_average_rating(course_id)
             count = reviews.get_count_reviewers(course_id)
-            return render_template("reviews.html", reviews=all_reviews, name=name, course=course_id, role=session["user_role"], error="Something went wrong when adding the review", average=average, count=count)
+            return render_template("reviews.html", reviews=all_reviews, name=name, \
+                course=course_id, role=session["user_role"], \
+                error="Something went wrong when adding the review", average=average, \
+                count=count)
 
 @app.route("/courses/<int:course_id>/reviews/<int:review_id>", methods=["POST"])
 def remove_review(course_id, review_id):
@@ -150,8 +163,10 @@ def signup():
         password = request.form["password"]
         password2 = request.form["password2"]
         if users.signup(username, password, password2):
-            return render_template("signup.html", success=f"User {username} created successfully.")
-        return render_template("signup.html", error="Invalid username/password or passwords didn't match.")
+            return render_template("signup.html", \
+                success=f"User {username} created successfully.")
+        return render_template("signup.html", \
+            error="Invalid username/password or passwords didn't match.")
 
 @app.route("/logout")
 def logout():
