@@ -22,7 +22,7 @@ Ylläpitäjä voi käyttäjän toiminnallisuuksien lisäksi:
 - Poistaa käyttäjien antamia arvioita.
 
 ### Toiminnallisuuksien testaus
-Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. Yksittäisen kentän sivulta käyttäjä pääsee myös katsomaan muiden käyttäjien antamia arvioita ja lisäämään oman arvionsa muiden nähtäville. Ylläpitäjän toiminnallisuuksia voi kurssin arvioinnissa testata käyttämällä seuraavia tunnuksia: admin, nimda1234. Älä kuitenkaan poista jo lisättyjä oikeita kenttiä.
+Nykyisiä toiminnallisuuksia voi testata herokussa luomalla käyttäjän ja kirjautumalla sisään. Käyttäjä voi tämän jälkeen selata Uudenmaan golf-kenttiä taulukosta etäisyyden ja hinnan mukaisessa järjestyksessä, sekä klikkaamalla kenttien nimien sisältämiä linkkejä tarkastella yksittäisen kentän tietoja ja hinnastoa. Yksittäisen kentän sivulta käyttäjä pääsee myös katsomaan muiden käyttäjien antamia arvioita ja lisäämään oman arvionsa muiden nähtäville.
 
 ### Tietojen muoto
 Sovelluksessa etäisyys Helsingin keskustasta on ilmoitettu kokonaislukuna. Matka-aika Helsingistä on nopein matka-aika autolla ilmoitettuna minuuteissa ja niin ikään kokonaislukuna. Taulukossa näytetään "Green fee" nimellä tallennettu hinta.
