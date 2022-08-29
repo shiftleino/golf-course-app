@@ -1,8 +1,8 @@
 # Tietokantasovellus - Helsingin yliopisto
-Tämä repositorio sisältää <I>Tietokantasovellus</I>-kurssin harjoitustyön. This repository contains the course project for the course Tietokantasovellus at University of Helsinki. The description is in Finnish (below). You can test the app here: https://golf-course-app.herokuapp.com.
+Tämä repositorio sisältää <I>Tietokantasovellus</I>-kurssin harjoitustyön. This repository contains the course project for the course Tietokantasovellus at University of Helsinki. The description is in Finnish (below). The app is not deployed anymore.
 
 ## Golf Course App
-Sovelluksen avulla voi tarkastella Uudenmaan golf-kenttiä. Käyttäjä voi sovelluksessa katsoa kenttiä Uudenmaan kartalta, tarkastella kenttien tietoja ja lähettää arvioita kentistä. Kaikki sovelluksen toiminnallisuudet on listattu Toiminnallisuudet-osioon. Sovellus on web-sovellus ja se on toteutettu Pythonin Flask-kirjastolla. Voit kokeilla sovellusta osoitteessa: https://golf-course-app.herokuapp.com.
+Sovelluksen avulla voi tarkastella Uudenmaan golf-kenttiä. Käyttäjä voi sovelluksessa katsoa kenttiä Uudenmaan kartalta, tarkastella kenttien tietoja ja lähettää arvioita kentistä. Kaikki sovelluksen toiminnallisuudet on listattu Toiminnallisuudet-osioon. Sovellus on web-sovellus ja se on toteutettu Pythonin Flask-kirjastolla. Sovelluksen sivusto ei ole enää pystyssä.
 
 ### Toiminnallisuudet
 Sovelluksessa on kaksi eri käyttäjäroolia: käyttäjä ja ylläpitäjä.<br>
